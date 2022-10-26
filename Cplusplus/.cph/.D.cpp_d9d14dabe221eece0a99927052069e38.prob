@@ -1,0 +1,1 @@
+{"name":"Local: D","url":"d:\\Competitive programming\\Cplusplus\\D.cpp","tests":[{"id":1665202094137,"input":"1:1\n2:0,6:6\n5:3\n0:4","output":"3\n-2\n-1\n0"},{"id":1665203212195,"input":"0:0,1:2\n\n3:3\n1:0","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Competitive programming\\Cplusplus\\D.cpp","group":"local","local":true}

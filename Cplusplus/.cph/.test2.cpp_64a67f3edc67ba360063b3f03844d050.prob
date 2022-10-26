@@ -1,0 +1,1 @@
+{"name":"Local: test2","url":"d:\\Competitive programming\\Cplusplus\\test2.cpp","tests":[{"id":1666520549237,"input":"2 3 3\n0 0 2 3\n0 0 1 0\n1 1 1 2","output":""},{"id":1666687533498,"input":"2 3 2\n0 0 1 2\n1 1 1 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Competitive programming\\Cplusplus\\test2.cpp","group":"local","local":true}
