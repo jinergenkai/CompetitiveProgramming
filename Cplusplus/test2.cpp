@@ -4,62 +4,55 @@ using namespace std;
 #define fi first
 #define se second
 #define endl '\n'
-#define pb push_back
 #define int long long
 #define all(x) x.begin(),x.end()
 
 const int inf = 1e9 + 7; const int N = 1000111;
 typedef pair<int, int> pii; typedef vector<int> vi; typedef long long ll;
 
-bool d[100];
-int n;
-
-bool check(int x, int k) {
-    int cnt = 0;
-    while(x) {
-        if (d[x%10] == false) return false;
-        cnt++;
-        x /= 10;
-    }
-    return cnt == k;
-}
+string a, b;
+int dp[100011][4][4];
+double save[100011][4][4];
  
- int res = 0;
+int f(int pos, int l, int r) { 
+    if (pos == a.size()+1) {
+        save[pos][l][r] = 0;
+        return 1;
+    } 
+ 
+    int &ans = dp[pos][l][r];
+    double &val = save[pos][l][r];
 
-void back(int first, int second) {
-    if (100 <= first && first <= 999) {
-        if (10 <= second && second <= 99) {
-            if (check(first * second, 4) && check(first * (second%10), 3) && check(first * (second/10), 3)) {
-                res ++;
-                // cout << first * second << endl;
-            }
-            return;
+    if (ans + 1) return ans;
+ 
+    
+    ans = 0;
+    val = 0;
+
+    int u = (l == true) ? a[pos-1] - '0' : 1;
+    int v = (r == true) ? b[pos-1] - '0' : 9;
+ 
+    for (int i = u; i <= v; i++) {
+        int newa = f(pos+1, i==u&&l, i==v&&r) * i % inf;
+        double newb = save[pos+1][i==u&&l][i==v&&r] + log2(double(i));
+        // cout << newb << endl;
+
+        if (newb > val) {
+            ans = newa;
+            val = newb;
         }
-        for (int i = 1; i <= 9; i++) {
-            if (d[i] == false) continue;
-            back(first, second * 10 + i);
-        }
+        // ans = max(ans, f(pos+1, i==u&&l, i==v&&r) *i);
     }
-    else {
-        for (int i = 1; i <= 9; i++) {
-            if (d[i] == false) continue;
-            back(first * 10 + i, second);
-        }
-    }
+    return ans;
 }
 
-void testcase() {
-     cin >> n;
-    for (int i = 1; i <= n; i++) {
-        int x; cin >> x;
-        // cout << x << " ";
-        d[x] = true;
-    }
-    back(0, 0);
-    cout << res ;
-}
-
-int32_t main(int32_t argc, char *argv[]) { ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    // cout << 1;
-    testcase();
+ 
+int32_t main() {
+   ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    cin >> a >> b;
+    while(a.size() < b.size()) a = '0' + a;
+    while(a.size() > b.size()) b = '0' + b;
+    // cout << a << " " << b;
+    memset(dp, -1, sizeof dp);
+    cout << f(1, 1, 1) % inf;
 }
