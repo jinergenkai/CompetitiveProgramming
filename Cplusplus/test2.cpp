@@ -1,58 +1,72 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-#define fi first
-#define se second
-#define endl '\n'
+typedef long long ll;
+const ll inf = 1e9 + 7;
 #define int long long
-#define all(x) x.begin(),x.end()
-
-const int inf = 1e9 + 7; const int N = 1000111;
-typedef pair<int, int> pii; typedef vector<int> vi; typedef long long ll;
+#define endl '\n'
 
 string a, b;
-int dp[100011][4][4];
-double save[100011][4][4];
- 
-int f(int pos, int l, int r) { 
+ll dp[200111][2][2];
+double trace[200111][2][2];
+
+ll f(int pos, int l, int r) {
+
     if (pos == a.size()+1) {
-        save[pos][l][r] = 0;
+        trace[pos][l][r] = 0;
         return 1;
-    } 
- 
-    int &ans = dp[pos][l][r];
-    double &val = save[pos][l][r];
+    }
 
+    ll &ans = dp[pos][l][r];
+    double &tr = trace[pos][l][r];
     if (ans + 1) return ans;
- 
-    
-    ans = 0;
-    val = 0;
 
-    int u = (l == true) ? a[pos-1] - '0' : 1;
+
+    tr = -inf;
+
+    int u = (l == true) ? a[pos-1] - '0' : 0;
     int v = (r == true) ? b[pos-1] - '0' : 9;
- 
-    for (int i = u; i <= v; i++) {
-        int newa = f(pos+1, i==u&&l, i==v&&r) * i % inf;
-        double newb = save[pos+1][i==u&&l][i==v&&r] + log2(double(i));
-        // cout << newb << endl;
 
-        if (newb > val) {
-            ans = newa;
-            val = newb;
+    for (int i = u; i <= v; i++) {
+        ll tmp_f = f(pos + 1, i==u&&l, i==v&&r) * i % inf;
+
+        double tmp_t = trace[pos + 1][i==u&&l][i==v&&r] + log2(i);
+        if (i == 0) tmp_t = -inf;
+
+        if (tr < tmp_t) {
+            tr = tmp_t;
+            ans = tmp_f;
         }
-        // ans = max(ans, f(pos+1, i==u&&l, i==v&&r) *i);
     }
     return ans;
 }
 
- 
 int32_t main() {
-   ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    freopen("input.txt", "r",stdin);
+    freopen("sai.txt", "w",stdout);
     cin >> a >> b;
     while(a.size() < b.size()) a = '0' + a;
-    while(a.size() > b.size()) b = '0' + b;
-    // cout << a << " " << b;
+    while(b.size() < a.size()) b = '0' + b;
+
     memset(dp, -1, sizeof dp);
-    cout << f(1, 1, 1) % inf;
+    memset(trace, -inf, sizeof trace);
+    // cout << b.size() << endl;
+    int tmp = -inf, val = -inf;
+    for (int i = 0; i <= 1; i++) {
+        for (int j = 0; j <= 1; j++) {
+            int k = f(1, i, j);
+            if (val < trace[1][i][j]) {
+                tmp = k;
+                val = trace[1][i][j];
+            }
+        }
+    }
+    tmp = f(1, 1, 1);
+    val = trace[1][1][1];
+
+    if (tmp <= -1 || val <= 0) {
+        cout << 0 << endl;
+        return 0;
+    }
+    cout << tmp << endl;
+    // cout << 1 + log2(0) << " ";
 }
