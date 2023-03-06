@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "CSharp",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"future": "cpp"
+		}
+	}
+}
