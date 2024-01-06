@@ -1,3 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:D:/CompetitiveProgramming/Python/media/videos/testmanim/480p15/partial_movie_files/ThreeDCameraRotation/2007862448_3092621627_359913990.mp4'
-file 'file:D:/CompetitiveProgramming/Python/media/videos/testmanim/480p15/partial_movie_files/ThreeDCameraRotation/133811335_329969645_2023089685.mp4'

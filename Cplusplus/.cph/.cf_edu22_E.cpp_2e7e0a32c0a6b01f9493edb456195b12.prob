@@ -1,1 +1,0 @@
-{"name":"Local: cf_edu22_E","url":"d:\\CompetitiveProgramming\\Cplusplus\\cf_edu22_E.cpp","tests":[{"id":1666708924711,"input":"6 2\n1 1 1 2 2 2\n5\n1 6\n4 3\n1 1\n2 6\n2 6","output":"2\n4\n1\n3\n2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CompetitiveProgramming\\Cplusplus\\cf_edu22_E.cpp","group":"local","local":true}

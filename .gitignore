@@ -5,6 +5,7 @@
 *.bin
 *.o
 
+build/
 
 // ignore folder vscode, cph
 .vscode/
@@ -13,6 +14,3 @@ __pycache__/
 
 //except
 !test.txt
-
-VOI.zip
-
