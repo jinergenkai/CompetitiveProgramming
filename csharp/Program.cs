@@ -40,6 +40,12 @@ namespace CompLib.Util
             _index = 0;
         }
 
+        public Scanner(string s)
+        {
+            _line = new []{s};
+            _index = 0;
+        }
+
         public string Next()
         {
             if (_index >= _line.Length)
@@ -94,7 +100,7 @@ public class Program
     {
         var sc = new Scanner();
         var t = 1;
-        t = sc.NextInt();
+        // t = sc.NextInt();
         while (t-- > 0)
         {
             main();
@@ -107,8 +113,42 @@ public class Program
 
     public static void main()
     {
-        var sc = new Scanner();
+        // var sc = new Scanner("");
+        String str = "<div>sad sad</div><div><p>das das</h></div>";
 
+        bool inTag = false;
+        String tagName = "";
+        var map = new Dictionary<string, int>();
+
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i] == '<') {
+                inTag = true;
+                continue;
+            }
+            else if (str[i] == '>') {
+                inTag = false;
+                if (!string.IsNullOrEmpty(tagName)) {
+                    map[tagName] = !map.ContainsKey(tagName) ? i : (map[tagName] > 0 ? 0 : i + 1);
+                    // Console.WriteLine(tagName);
+                    tagName = "";
+                }
+                continue;
+            }
+            if (inTag) {
+                if (str[i] != '/')
+                    tagName += str[i];
+            }
+        }
+        //for my map sort by value
+        foreach (var item in map.OrderBy(x => x.Value))
+        {    
+            if (item.Value != 0) {
+                Console.WriteLine(item.Key);
+                return;
+            }
+        }
+        Console.WriteLine("Empty");
     }
 
 }

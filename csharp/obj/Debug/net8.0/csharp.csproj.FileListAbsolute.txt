@@ -1,0 +1,15 @@
+D:\project\_CompetitiveProgramming\csharp\bin\Debug\net8.0\csharp.exe
+D:\project\_CompetitiveProgramming\csharp\bin\Debug\net8.0\csharp.deps.json
+D:\project\_CompetitiveProgramming\csharp\bin\Debug\net8.0\csharp.runtimeconfig.json
+D:\project\_CompetitiveProgramming\csharp\bin\Debug\net8.0\csharp.dll
+D:\project\_CompetitiveProgramming\csharp\bin\Debug\net8.0\csharp.pdb
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.GeneratedMSBuildEditorConfig.editorconfig
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.AssemblyInfoInputs.cache
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.AssemblyInfo.cs
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.csproj.CoreCompileInputs.cache
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.sourcelink.json
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.dll
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\refint\csharp.dll
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.pdb
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\csharp.genruntimeconfig.cache
+D:\project\_CompetitiveProgramming\csharp\obj\Debug\net8.0\ref\csharp.dll

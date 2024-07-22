@@ -16,32 +16,46 @@ void print(T a, Args... args) {cout << a << " ";print(args...);}
 template<typename T, typename... Args>
 void println(T a, Args... args) {cout << a << " ";println(args...);}
 
-int back(vi a, int i, int n, int sum, int two, int one) {
-    while(i <= n && a[i] < sum)
-        sum += a[i++]/2;
-    
-    if (i == n+1) return n;
-    return max(two == 0 ? i-1: back(a, i, n, sum * 2, two-1, one),
-                    one == 0 ? i-1: back(a, i, n, sum * 3, two, one-1));
-    nguyen manh hung
-        day la ban sao thu 2
-}
-
 void testcase() {
-    int n, start; cin >> n >> start;
-    vi a(n + 1, 0);
+  int n; cin >> n;
 
-    int sum = start, cnt = 0, two = 0, one = 1;
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i];
+  int pow2 = 0;
+  while((1 << pow2)-2 <= n) pow2++;
+  pow2--;
+
+  cout << pow2 << endl;
+
+  if (pow2 == 1) {
+    cout << 1 << endl;
+    return;
+  }
+  vector<int> ans = {1, 2};
+  vector<int> nxt;
+  int mul = 4;
+
+  for (int i = 3; i <= pow2; i++, mul *= 2) {
+    for (int j = 0; j < ans.size(); j++) {
+      nxt.push_back(ans[j] + mul);
     }
-    sort(next(a.begin()), a.end());
-    println(back(a, 1, n, start, 2, 1));
+    nxt.push_back(mul-1);
+
+    ans = nxt;
+    nxt.clear();
+  }
+
+  sort(ans.begin(), ans.end());
+
+  for (int i = 0; i < ans.size(); i++) {
+    cout << ans[i] << " ";
+  }
+  cout << endl;
+
+
 }
 
 int32_t main() {
     if(fopen("test.txt","r")) freopen("test.txt","r",stdin);
-    int t = 1; 
-    cin >> t; 
+    int t = 1;
+    cin >> t;
     while(t--) testcase();
 }
